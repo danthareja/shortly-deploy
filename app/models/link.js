@@ -22,6 +22,8 @@ linkSchema.pre('save', function(next) {
 // A mongoose model instantiates a mongo collection (adds 's' to collection name)
 var Link = mongoose.model('link', linkSchema);
 
+module.exports = Link;
+
 // // *********** Bookshelf and sqlite ******************* //
 // var db = require('../config');
 
@@ -40,5 +42,4 @@ var Link = mongoose.model('link', linkSchema);
 //   }
 // });
 
-module.exports = Link;
 
