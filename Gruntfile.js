@@ -22,7 +22,7 @@ module.exports = function(grunt) {
     mochaTest: {
       test: {
         options: {
-          reporter: 'nyan',
+          reporter: 'spec',
           bail: true,
           timeout: 2000
         },

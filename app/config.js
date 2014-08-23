@@ -1,3 +1,30 @@
+// *********** Mongoose and mongodb ******************** //
+var mongoose = require('mongoose');
+
+// Handle local dev and production
+var mongoHost =
+process.env.MONGOLAB_URI ||
+process.env.MONGOHQ_URL ||
+'mongodb://localhost/shortly';
+
+// Write connect function to export across modules
+var connect = function(connectionString) {
+  mongoose.connect(mongoHost);
+
+  // From mongoose homepage
+  var dbm = mongoose.connection;
+  dbm.on('error', console.error.bind(console, 'connection error:'));
+  dbm.once('open', function () {
+    console.log("woo mongoose is open @: ", connectionString);
+  });
+}
+
+module.exports = connect;
+
+connect(mongoHost); // Maybe put this in app.js?
+
+// *********** Bookshelf and sqlite ******************* //
+
 var Bookshelf = require('bookshelf');
 var path = require('path');
 
